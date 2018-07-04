@@ -1,4 +1,4 @@
-#!/home/isvialnva/Proyectos/djangog/venve/bin/python2
+#!/home/isvialnva/Proyectos/djangog/venve/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
