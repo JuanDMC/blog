@@ -20,7 +20,7 @@ def nuevo_post(request):
         if form.is_valid():
                 post = form.save(commit=False)
                 post.autor = request.user
-                post.fecha_publicado = timezone.now()
+                # post.fecha_publicado = timezone.now()
                 post.save()
                 return redirect('detalle_post', pk=post.pk)
     else:
@@ -39,3 +39,7 @@ def editar_post(request, pk):
         else:
             form = PostForm(instance=post)
         return render(request, 'blog/editar_post.html', {'form': form})
+
+def lista_borradores(request):
+    posts = Post.objects.filter(fecha_publicado__isnull=True).order_by('fecha_creado')
+    return render(request, 'blog/lista_borradores.html', {'posts': posts})
